@@ -120,6 +120,131 @@ public class StudentController {
                         )
                 )
         );
+        List<SchoolHistoryModel> schoolHistoryModels3 = new ArrayList<>();
+        schoolHistoryModels3.add(
+                new SchoolHistoryModel(1,"SD PAMARICAN 2","PAMARICAN","PAMARICAN",
+                        Arrays.asList(
+                                new SchoolClassModel(100, "Kelas 1", LocalDate.of(2010,6,18), LocalDate.of(2011, 7, 20), "Bu Umul"),
+                                new SchoolClassModel(101, "Kelas 2", LocalDate.of(2011,6,18), LocalDate.of(2012, 7, 20), "Bu Umul"),
+                                new SchoolClassModel(102, "Kelas 3", LocalDate.of(2012,6,18), LocalDate.of(2013, 7, 20), "Bu Umul"),
+                                new SchoolClassModel(103, "Kelas 4", LocalDate.of(2013,6,18), LocalDate.of(2014, 7, 20), "Bu Umul"),
+                                new SchoolClassModel(104, "Kelas 5", LocalDate.of(2014,6,18), LocalDate.of(2015, 7, 20), "Bu Umul"),
+                                new SchoolClassModel(105, "Kelas 6", LocalDate.of(2015,6,18), LocalDate.of(2016, 7, 20), "Bu Umul")
+                        )
+                )
+        );
+        schoolHistoryModels3.add(
+                new SchoolHistoryModel(2,"SMP KOTA GAJAH","KOTAGAJAH","LAMPUNG",
+                        Arrays.asList(
+                                new SchoolClassModel(106, "Kelas 1", LocalDate.of(2016,6,18), LocalDate.of(2017, 7, 20), "Pak Dani"),
+                                new SchoolClassModel(107, "Kelas 2", LocalDate.of(2017,6,18), LocalDate.of(2018, 7, 20), "Pak Daani"),
+                                new SchoolClassModel(108, "Kelas 3", LocalDate.of(2018,6,18), LocalDate.of(2019, 7, 20), "Pak Dani")
+                        )
+                )
+        );
+        schoolHistoryModels3.add(
+             new SchoolHistoryModel(3,"SMA LAMPUNG","LAMPUNG","LAMPUNG",
+                     Arrays.asList(
+                             new SchoolClassModel(109, "Kelas 1", LocalDate.of(2017,6,18), LocalDate.of(2018, 7, 20), "Bu Umi"),
+                             new SchoolClassModel(110, "Kelas 2", LocalDate.of(2018,6,18), LocalDate.of(2019, 7, 20), "Bu Umi"),
+                             new SchoolClassModel(111, "Kelas 3", LocalDate.of(2020,6,18), LocalDate.of(2021, 7, 20), "Bu Umi")
+                     )
+             )
+        );
+        List<SchoolHistoryModel> schoolHistoryModels4 = new ArrayList<>();
+        schoolHistoryModels4.add(
+                new SchoolHistoryModel(1,"SDN BANJAR 3","BANJAR","BANJAR",
+                        Arrays.asList(
+                                new SchoolClassModel(100, "Kelas 1", LocalDate.of(2010,6,18), LocalDate.of(2011, 7, 20), "Bu Umul"),
+                                new SchoolClassModel(101, "Kelas 2", LocalDate.of(2011,6,18), LocalDate.of(2012, 7, 20), "Bu Umul"),
+                                new SchoolClassModel(102, "Kelas 3", LocalDate.of(2012,6,18), LocalDate.of(2013, 7, 20), "Bu Umul"),
+                                new SchoolClassModel(103, "Kelas 4", LocalDate.of(2013,6,18), LocalDate.of(2014, 7, 20), "Bu Umul"),
+                                new SchoolClassModel(104, "Kelas 5", LocalDate.of(2014,6,18), LocalDate.of(2015, 7, 20), "Bu Umul"),
+                                new SchoolClassModel(105, "Kelas 6", LocalDate.of(2015,6,18), LocalDate.of(2016, 7, 20), "Bu Umul")
+                        )
+                )
+        );
+        schoolHistoryModels4.add(
+                new SchoolHistoryModel(3,"SMA LAMPUNG","LAMPUNG","LAMPUNG",
+                        Arrays.asList(
+                                new SchoolClassModel(109, "Kelas 1", LocalDate.of(2017,6,18), LocalDate.of(2018, 7, 20), "Bu Umi"),
+                                new SchoolClassModel(110, "Kelas 2", LocalDate.of(2018,6,18), LocalDate.of(2019, 7, 20), "Bu Umi"),
+                                new SchoolClassModel(111, "Kelas 3", LocalDate.of(2020,6,18), LocalDate.of(2021, 7, 20), "Bu Umi")
+                        )
+                )
+        );
+        schoolHistoryModels4.add(
+                new SchoolHistoryModel(3,"SMA LAMPUNG","LAMPUNG","LAMPUNG",
+                        Arrays.asList(
+                                new SchoolClassModel(109, "Kelas 1", LocalDate.of(2017,6,18), LocalDate.of(2018, 7, 20), "Bu Umi"),
+                                new SchoolClassModel(110, "Kelas 2", LocalDate.of(2018,6,18), LocalDate.of(2019, 7, 20), "Bu Umi"),
+                                new SchoolClassModel(111, "Kelas 3", LocalDate.of(2020,6,18), LocalDate.of(2021, 7, 20), "Bu Umi")
+                        )
+                )
+        );
+        List<SchoolHistoryModel> schoolHistoryModels5 = new ArrayList<>();
+        schoolHistoryModels5.add(
+                new SchoolHistoryModel(1,"SD NEGRI 1","KOTAGAJAH","KOTAGAJA",
+                        Arrays.asList(
+                                new SchoolClassModel(100, "Kelas 1", LocalDate.of(2010,6,18), LocalDate.of(2011, 7, 20), "Bu Umul"),
+                                new SchoolClassModel(101, "Kelas 2", LocalDate.of(2011,6,18), LocalDate.of(2012, 7, 20), "Bu Umul"),
+                                new SchoolClassModel(102, "Kelas 3", LocalDate.of(2012,6,18), LocalDate.of(2013, 7, 20), "Bu Umul"),
+                                new SchoolClassModel(103, "Kelas 4", LocalDate.of(2013,6,18), LocalDate.of(2014, 7, 20), "Bu Umul"),
+                                new SchoolClassModel(104, "Kelas 5", LocalDate.of(2014,6,18), LocalDate.of(2015, 7, 20), "Bu Umul"),
+                                new SchoolClassModel(105, "Kelas 6", LocalDate.of(2015,6,18), LocalDate.of(2016, 7, 20), "Bu Umul")
+                        )
+                )
+        );
+        schoolHistoryModels5.add(
+                new SchoolHistoryModel(2,"SMP KOTA GAJAH","KOTAGAJAH","LAMPUNG",
+                        Arrays.asList(
+                                new SchoolClassModel(106, "Kelas 1", LocalDate.of(2016,6,18), LocalDate.of(2017, 7, 20), "Pak Dani"),
+                                new SchoolClassModel(107, "Kelas 2", LocalDate.of(2017,6,18), LocalDate.of(2018, 7, 20), "Pak Daani"),
+                                new SchoolClassModel(108, "Kelas 3", LocalDate.of(2018,6,18), LocalDate.of(2019, 7, 20), "Pak Dani")
+                        )
+                )
+        );
+        schoolHistoryModels5.add(
+                new SchoolHistoryModel(12, "SMK TEKSTIL PANDAAN", "KECAMATAN PANDAAN","PANDAAN",
+                        Arrays.asList(
+                                new SchoolClassModel(109, "Kelas 1", LocalDate.of(2017,6,18), LocalDate.of(2018, 7, 20), "Bu Saebah"),
+                                new SchoolClassModel(110, "Kelas 2", LocalDate.of(2018,6,18), LocalDate.of(2019, 7, 20), "Bu Saebah"),
+                                new SchoolClassModel(111, "Kelas 3", LocalDate.of(2020,6,18), LocalDate.of(2021, 7, 20), "Bu Saebah")
+                        )
+                )
+        );
+        List<SchoolHistoryModel> schoolHistoryModels6 = new ArrayList<>();
+        schoolHistoryModels6.add(
+                new SchoolHistoryModel(1,"SDN BANJARSARI 2","BANJARSARI","BANJAR",
+                        Arrays.asList(
+                                new SchoolClassModel(100, "Kelas 1", LocalDate.of(2010,6,18), LocalDate.of(2011, 7, 20), "Bu Ani"),
+                                new SchoolClassModel(101, "Kelas 2", LocalDate.of(2011,6,18), LocalDate.of(2012, 7, 20), "Bu Ani"),
+                                new SchoolClassModel(102, "Kelas 3", LocalDate.of(2012,6,18), LocalDate.of(2013, 7, 20), "Bu Ani"),
+                                new SchoolClassModel(103, "Kelas 4", LocalDate.of(2013,6,18), LocalDate.of(2014, 7, 20), "Bu Ani"),
+                                new SchoolClassModel(104, "Kelas 5", LocalDate.of(2014,6,18), LocalDate.of(2015, 7, 20), "Bu Ani"),
+                                new SchoolClassModel(105, "Kelas 6", LocalDate.of(2015,6,18), LocalDate.of(2016, 7, 20), "Bu Ani")
+                        )
+                )
+        );
+        schoolHistoryModels6.add(
+                new SchoolHistoryModel(11,"SMP NEGRI 2 BEJI","KECAMATAN BEJI","BEJI",
+                        Arrays.asList(
+                                new SchoolClassModel(106, "Kelas 1", LocalDate.of(2016,6,18), LocalDate.of(2017, 7, 20), "Pak Roni Purwanto"),
+                                new SchoolClassModel(107, "Kelas 2", LocalDate.of(2017,6,18), LocalDate.of(2018, 7, 20), "Pak Roni Purwanto"),
+                                new SchoolClassModel(108, "Kelas 3", LocalDate.of(2018,6,18), LocalDate.of(2019, 7, 20), "Pak Roni Purwanto")
+                        )
+                )
+        );
+        schoolHistoryModels6.add(
+                new SchoolHistoryModel(3,"SMK KERTAHAYU","KERTAHAYU","PAMARICAN",
+                        Arrays.asList(
+                                new SchoolClassModel(109, "Kelas 1", LocalDate.of(2017,6,18), LocalDate.of(2018, 7, 20), "Pak Arif Budianto"),
+                                new SchoolClassModel(110, "Kelas 2", LocalDate.of(2018,6,18), LocalDate.of(2019, 7, 20), "Pak Arif Budianto"),
+                                new SchoolClassModel(111, "Kelas 3", LocalDate.of(2020,6,18), LocalDate.of(2021, 7, 20), "Pak Arif Budianto")
+                        )
+                )
+        );
+
         StudentModel studentModel = new StudentModel(1,"Sabilla","Muhammad","Surabaya");
         studentModel.setSchoolHistory(schoolHistory);
 
@@ -128,12 +253,26 @@ public class StudentController {
 
         StudentModel studentModel1 = new StudentModel(3,"Arif","Pratama","Lampung");
         studentModel1.setSchoolHistory(schoolHistoryModels2);
+
+        StudentModel studentModel2 = new StudentModel(4,"Ikhlas","Ramadhani","Pandaan");
+        studentModel2.setSchoolHistory(schoolHistoryModels3);
+
+        StudentModel studentModel3 = new StudentModel(5,"Erika","Cahya","Gempol");
+        studentModel3.setSchoolHistory(schoolHistoryModels4);
+
+        StudentModel studentModel4 = new StudentModel(6,"Akmal","Firmansyah","Ciparakan");
+        studentModel4.setSchoolHistory(schoolHistoryModels5);
+
+        StudentModel studentModel5 = new StudentModel(7,"Ijaj","Kertahayu","Blimbing");
+        studentModel5.setSchoolHistory(schoolHistoryModels6);
         // generate data
         this.students.add(studentModel);
         this.students.add(student);
         this.students.add(studentModel1);
-        this.students.add(new StudentModel(4,"Ikhlas","Ramadhani","Pandaan"));
-        this.students.add(new StudentModel(5,"Erika","Cahya","Gempol"));
+        this.students.add(studentModel2);
+        this.students.add(studentModel3);
+        this.students.add(studentModel4);
+        this.students.add(studentModel5);
 
     }
 
