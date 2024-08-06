@@ -1,4 +1,4 @@
-package org.project.sistemsekolah.controller;
+package org.project.sistemsekolah.home;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

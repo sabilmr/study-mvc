@@ -1,13 +1,10 @@
-package org.project.sistemsekolah.controller;
+package org.project.sistemsekolah.student.controller;
 
-import lombok.RequiredArgsConstructor;
-import org.project.sistemsekolah.model.SchoolClassModel;
-import org.project.sistemsekolah.model.SchoolHistoryModel;
-import org.project.sistemsekolah.model.StudentModel;
+import org.project.sistemsekolah.student.model.SchoolClassModel;
+import org.project.sistemsekolah.student.model.SchoolHistoryModel;
+import org.project.sistemsekolah.student.model.StudentModel;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
@@ -296,5 +293,57 @@ public class StudentController {
             return new ModelAndView("redirect:/student");
         }
         return mav;
+    }
+
+    @GetMapping("/add")
+    public ModelAndView add() {
+        ModelAndView mav = new ModelAndView("pages/student/add");
+        StudentModel student = new StudentModel();
+
+        List<SchoolHistoryModel> schoolHistoryModel = new ArrayList<>();
+
+        // SD Class
+        ArrayList<SchoolClassModel> sdClass = new ArrayList<>();
+        sdClass.add(new SchoolClassModel(0, "Kelas 1", null, null, ""));
+        sdClass.add(new SchoolClassModel(0, "Kelas 2", null, null, ""));
+        sdClass.add(new SchoolClassModel(0, "Kelas 3", null, null, ""));
+        sdClass.add(new SchoolClassModel(0, "Kelas 4", null, null, ""));
+        sdClass.add(new SchoolClassModel(0, "Kelas 5", null, null, ""));
+        sdClass.add(new SchoolClassModel(0, "Kelas 6", null, null, ""));
+
+        // SD
+        SchoolHistoryModel sdHistory = new SchoolHistoryModel(0, "SD", "", "", sdClass);
+        // add school histoty
+        schoolHistoryModel.add(sdHistory);
+
+        //SMP Class
+        ArrayList<SchoolClassModel> sdClass1 = new ArrayList<>();
+        sdClass1.add(new SchoolClassModel(0, "Kelas 1", null, null, ""));
+        sdClass1.add(new SchoolClassModel(0, "Kelas 2", null, null, ""));
+        sdClass1.add(new SchoolClassModel(0, "Kelas 3", null, null, ""));
+
+        SchoolHistoryModel sdHistory1 = new SchoolHistoryModel(0, "SMP", "", "", sdClass1);
+        schoolHistoryModel.add(sdHistory1);
+
+        //SMK Class
+        ArrayList<SchoolClassModel> sdClass2 = new ArrayList<>();
+        sdClass2.add(new SchoolClassModel(0, "Kelas 1", null, null, ""));
+        sdClass2.add(new SchoolClassModel(0, "Kelas 2", null, null, ""));
+        sdClass2.add(new SchoolClassModel(0, "Kelas 3", null, null, ""));
+
+        SchoolHistoryModel sdHistory2 = new SchoolHistoryModel(0, "SMK", "", "", sdClass2);
+        schoolHistoryModel.add(sdHistory2);
+
+        student.setSchoolHistory(schoolHistoryModel);
+
+        mav.addObject("student", student);
+
+        return mav;
+    }
+
+    @PostMapping("/save")
+    public ModelAndView save(@ModelAttribute("student") StudentModel student) {
+        students.add(student);
+        return new ModelAndView("redirect:/student");
     }
 }

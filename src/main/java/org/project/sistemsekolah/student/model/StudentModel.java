@@ -1,4 +1,4 @@
-package org.project.sistemsekolah.model;
+package org.project.sistemsekolah.student.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
