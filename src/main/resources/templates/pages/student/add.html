@@ -81,16 +81,16 @@
                             <tr th:each="data,classIter : ${history.schoolClasses}">
                                 <th scope="row" th:text="${classIter.index}">1</th>
                                 <td>
-                                    <input type="text" class="form-control" th:name="|schoolHistory[${hisIter.index}].schoolClasses[${classIter.index}].className|">
+                                    <input type="text" class="form-control" th:name="|schoolHistory[${hisIter.index}].schoolClasses[${classIter.index}].className|" th:value="${data.schoolClass}">
                                 </td>
                                 <td>
-                                    <input type="date" class="form-control" th:name="|schoolHistory[${hisIter.index}].schoolClasses[${classIter.index}].startDate|">
+                                    <input type="date" class="form-control" th:name="|schoolHistory[${hisIter.index}].schoolClasses[${classIter.index}].startDate|" th:value="${data.startDate}">
                                 </td>
                                 <td>
-                                    <input type="date" class="form-control" th:name="|schoolHistory[${hisIter.index}].schoolClasses[${classIter.index}].endDate|">
+                                    <input type="date" class="form-control" th:name="|schoolHistory[${hisIter.index}].schoolClasses[${classIter.index}].endDate|" th:value="${data.endDate}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" th:name="|schoolHistory[${hisIter.index}].schoolClasses[${classIter.index}].teacherName|">
+                                    <input type="text" class="form-control" th:name="|schoolHistory[${hisIter.index}].schoolClasses[${classIter.index}].teacherName|" th:value="${data.teacherName}">
                                 </td>
                             </tr>
                             </tbody>
@@ -100,8 +100,10 @@
                 </div>
             </div>
         </div>
-
-        <button type="submit" class="btn btn-primary">Save</button>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="reset" class="btn btn-secondary"><a th:href="@{~/student}">Close</a></button>
+        </div>
     </form>
 </div>
 
