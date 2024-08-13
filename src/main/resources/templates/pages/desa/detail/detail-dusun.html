@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Detail-Dusun</title>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand">Navbar</a>
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<div class="container-fluid">
+    <h2>Dusun Detail</h2>
+
+    <form>
+        <div class="row">
+            <div class="col-12">
+            <input type="hidden" name="id" th:value="${dusun.id}">
+                <div class="mb-3">
+                    <label for="kelurahan" class="form-label">Kelurahan</label>
+                    <input type="text" class="form-control" id="kelurahan" th:value="${kelurahan.nama}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nama Dusun</label>
+                    <input type="text" class="form-control" id="name" th:value="${dusun.name}" readonly>
+                </div>
+            </div>
+        </div>
+        <h3>Daftar RW</h3>
+        <div class="row">
+            <div class="col-12">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>RW</th>
+                            <th>Name RW</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="data, no :${dusun.daftarRW}">
+                            <th scope="row" th:text="${no.index + 1}"></th>
+                            <td th:text="${data.name}"></td>
+                            <td th:text="${data.nameRW}"></td>
+                            <td>
+                                <a th:href="@{~/kelurahan/v2/detail/{kelurahanId}/dusun/{dusunId}/rw/{rwId}(kelurahanId=${kelurahan.id}, dusunId=${dusun.id}, rwId=${data.id})}" class="btn btn-primary">
+                                    Detail
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

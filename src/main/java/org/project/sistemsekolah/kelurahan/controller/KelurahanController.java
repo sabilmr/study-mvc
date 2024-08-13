@@ -86,7 +86,7 @@ public class KelurahanController {
 
     @GetMapping("/detail/{id}")
     public ModelAndView detail(@PathVariable int id) {
-        ModelAndView view = new ModelAndView("pages/kelurahan/detail");
+        ModelAndView view = new ModelAndView("pages/kelurahan/detail/detail");
 
         Optional<KelurahanModel> result = this.kelurahan.stream().filter(k -> k.getId() == id).findFirst();
         if (result.isPresent()) {
@@ -99,7 +99,7 @@ public class KelurahanController {
 
     @GetMapping("/detail/dusun/{id}")
     public ModelAndView detailDusun(@PathVariable int id) {
-        ModelAndView view = new ModelAndView("pages/kelurahan/detail-dusun");
+        ModelAndView view = new ModelAndView("pages/kelurahan/detail/detail-dusun");
 
         for (KelurahanModel kelurahanModel : this.kelurahan) {
             for (DusunModel dusunModel : kelurahanModel.getDaftarDusun()){
@@ -115,7 +115,7 @@ public class KelurahanController {
 
     @GetMapping("/detail/dusun/rw/{id}")
     public ModelAndView detailDusunRw(@PathVariable int id) {
-        ModelAndView view = new ModelAndView("pages/kelurahan/detail-rw");
+        ModelAndView view = new ModelAndView("pages/kelurahan/detail/detail-rw");
 
         for (KelurahanModel kelurahanModel : this.kelurahan) {
             for (DusunModel dusunModel : kelurahanModel.getDaftarDusun()){
@@ -134,7 +134,7 @@ public class KelurahanController {
 
     @GetMapping("/detail/dusun/rw/rt/{id}")
     public ModelAndView detailDusunRwRt(@PathVariable int id) {
-        ModelAndView view = new ModelAndView("pages/kelurahan/detail-rt");
+        ModelAndView view = new ModelAndView("pages/kelurahan/detail/detail-rt");
 
         for (KelurahanModel kelurahanModel : this.kelurahan) {
             for (DusunModel dusunModel : kelurahanModel.getDaftarDusun()){
