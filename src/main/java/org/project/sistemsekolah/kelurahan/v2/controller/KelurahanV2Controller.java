@@ -132,9 +132,8 @@ public class KelurahanV2Controller {
                            @PathVariable("rwId") Integer rwId,
                            @PathVariable("rtId") Integer rtId) {
         ModelAndView mav = new ModelAndView("pages/kelurahanV2/detail/detail-rt");
-        mav.addObject("id", kelurahanId);
 
-        Optional<KelurahanModelV2> desa = kelurahan.stream().filter(x -> x.getId().equals(dusunId)).findFirst();
+        Optional<KelurahanModelV2> desa = kelurahan.stream().filter(x -> x.getId().equals(kelurahanId)).findFirst();
         if (desa.isPresent()) {
             DusunModelV2 dusun = desa.get().getDaftarDusun().stream().filter(x -> x.getId().equals(dusunId)).findFirst().get();
             RWModelV2 rw = dusun.getDaftarRW().stream().filter(x -> x.getId().equals(rwId)).findFirst().get();

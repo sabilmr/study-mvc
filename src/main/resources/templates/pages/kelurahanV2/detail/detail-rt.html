@@ -23,7 +23,7 @@
   <form>
     <div class="row">
       <div class="col-12">
-      <input type="hidden" name="id" th:value="${rt.id}" readonly>
+      <input type="hidden" name="id" th:value="${rt.id}">
         <div class="mb-3">
           <label for="nama" class="form-label">Kelurahan</label>
           <input type="text" class="form-control" id="nama" th:value="${kelurahan.nama}" readonly>
@@ -42,7 +42,7 @@
         </div>
         <div class="mb-3">
           <label for="nameRt" class="form-label">Nama RT</label>
-          <input type="text" class="form-control" id="nameRt" th:value="${rt.nameRt}" readonly>
+          <input type="text" class="form-control" id="nameRt" th:value="${rt.nameRT}" readonly>
         </div>
       </div>
     </div>
@@ -61,8 +61,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="data :${rt.daftarWarga}">
-              <td th:text="${data.id}"></td>
+            <tr th:each="data, no :${rt.daftarWarga}">
+              <th scope="row" th:text="${no.index + 1}"></th>
               <td th:text="${data.nik}"></td>
               <td th:text="${data.namaWarga}"></td>
               <td th:text="${data.jenisKelamin}"></td>

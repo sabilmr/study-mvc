@@ -98,7 +98,11 @@
                                                 <input type="text" class="form-control" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].daftarWarga[${warIter.index}].namaWarga|">
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].daftarWarga[${warIter.index}].jenisKelamin|">
+                                                <select class="form-select" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].daftarWarga[${warIter.index}].jenisKelamin|">
+                                                    <option value="">Pilih Jenis Kelamin</option>
+                                                    <option value="Pria">Pria</option>
+                                                    <option value="Wanita">Wanita</option>
+                                                </select>
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].daftarWarga[${warIter.index}].age|">

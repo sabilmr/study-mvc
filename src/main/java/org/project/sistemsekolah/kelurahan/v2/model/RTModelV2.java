@@ -13,25 +13,25 @@ import java.util.List;
 public class RTModelV2 {
     private Integer id;
     private String name;
-    private String nameRt;
+    private String nameRT;
     private RWModelV2 rw;
     private DusunModelV2 dusun;
     private KelurahanModelV2 kelurahan;
     List<WargaModelV2> daftarWarga = new ArrayList<>();
 
-    public RTModelV2(Integer id, String name, String nameRt, RWModelV2 rw, DusunModelV2 dusun, KelurahanModelV2 kelurahan) {
+    public RTModelV2(Integer id, String name, String nameRT, RWModelV2 rw, DusunModelV2 dusun, KelurahanModelV2 kelurahan) {
         this.id = id;
         this.name = name;
-        this.nameRt = nameRt;
+        this.nameRT = nameRT;
         this.rw = rw;
         this.dusun = dusun;
         this.kelurahan = kelurahan;
     }
 
-    public RTModelV2(Integer id, String name, String nameRt, List<WargaModelV2> daftarWarga) {
+    public RTModelV2(Integer id, String name, String nameRT, List<WargaModelV2> daftarWarga) {
         this.id = id;
         this.name = name;
-        this.nameRt = nameRt;
+        this.nameRT = nameRT;
         this.daftarWarga = daftarWarga;
     }
 }
