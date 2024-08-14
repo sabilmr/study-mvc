@@ -1,10 +1,8 @@
-package org.project.sistemsekolah.v2.model;
+package org.project.sistemsekolah.kelurahan.v2.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.project.sistemsekolah.kelurahan.modal.DusunModel;
-import org.project.sistemsekolah.kelurahan.modal.RWModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,5 +26,12 @@ public class RTModelV2 {
         this.rw = rw;
         this.dusun = dusun;
         this.kelurahan = kelurahan;
+    }
+
+    public RTModelV2(Integer id, String name, String nameRt, List<WargaModelV2> daftarWarga) {
+        this.id = id;
+        this.name = name;
+        this.nameRt = nameRt;
+        this.daftarWarga = daftarWarga;
     }
 }

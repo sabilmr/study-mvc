@@ -1,4 +1,4 @@
-package org.project.sistemsekolah.v2.model;
+package org.project.sistemsekolah.kelurahan.v2.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

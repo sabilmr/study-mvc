@@ -19,7 +19,7 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <a th:href="@{~/kelurahan/add}"><h2>Kelurahan List</h2></a>
+    <a th:href="@{~/kelurahan/v2/add}"><h2>Kelurahan List</h2></a>
 
     <table class="table table-striped">
         <thead>
@@ -40,10 +40,10 @@
                 <a th:href="@{~/kelurahan/v2/detail/{id}(id=${data.id})}" class="btn btn-primary">
                     Detail
                 </a>
-                <a th:href="@{~/kelurahan/edit/{id}(id=${data.id})}" class="btn btn-success">
+                <a th:href="@{~/kelurahan/v2/edit/{id}(id=${data.id})}" class="btn btn-success">
                     Edit
                 </a>
-                <a th:href="@{~/kelurahan/delete/{id}(id=${data.id})}" class="btn btn-danger">
+                <a th:href="@{~/kelurahan/v2/delete/{id}(id=${data.id})}" class="btn btn-danger">
                     Delete
                 </a>
             </td>

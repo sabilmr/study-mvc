@@ -1,9 +1,10 @@
-package org.project.sistemsekolah.v2.model;
+package org.project.sistemsekolah.kelurahan.v2.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.net.ssl.SSLSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,4 +22,5 @@ public class KelurahanModelV2 {
         this.nama = nama;
         this.alamat = alamat;
     }
+
 }

@@ -1,4 +1,4 @@
-package org.project.sistemsekolah.v2.model;
+package org.project.sistemsekolah.kelurahan.v2.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,5 +20,11 @@ public class DusunModelV2 {
         this.id = id;
         this.name = name;
         this.kelurahan = kelurahan;
+    }
+
+    public DusunModelV2(Integer id, String name, List<RWModelV2> daftarRW) {
+        this.id = id;
+        this.name = name;
+        this.daftarRW = daftarRW;
     }
 }
