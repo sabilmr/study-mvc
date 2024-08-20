@@ -24,10 +24,7 @@
     <form>
         <div class="row">
             <div class="col-12">
-                <div class="mb-3">
-                    <label for="id" class="form-label">Id</label>
-                    <input type="text" class="form-control" id="id" th:value="${kelurahan.id}">
-                </div>
+                <input type="hidden" name="id" th:value="${kelurahan.id}">
                 <div class="mb-3">
                     <label for="firstName" class="form-label">Name kelurahan</label>
                     <input type="text" class="form-control" id="firstName" th:value="${kelurahan.nama}">
@@ -55,7 +52,7 @@
                                 <th scope="row" th:text="${data.id}">1</th>
                                 <td th:text="${data.name}">Mark</td>
                                 <td>
-                                    <a th:href="@{~/kelurahan/detail/dusun/{id}(id=${data.id})}" class="btn btn-primary">
+                                    <a th:href="@{~/kelurahan/detail/{kelurahanId}/dusun/{dusunId}(kelurahanId=${kelurahan.id}, dusunId=${data.id})}" class="btn btn-primary">
                                         Detail
                                     </a>
                                 </td>

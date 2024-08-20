@@ -13,12 +13,12 @@ import java.util.List;
 public class RTModel {
     private Integer id;
     private String name;
-    private String nameRt;
+    private String nameRT;
     List<WargaModel> daftarWarga = new ArrayList<>();
 
-    public RTModel(Integer id, String name, String nameRt) {
+    public RTModel(Integer id, String name, String nameRT) {
         this.id = id;
         this.name = name;
-        this.nameRt = nameRt;
+        this.nameRT = nameRT;
     }
 }

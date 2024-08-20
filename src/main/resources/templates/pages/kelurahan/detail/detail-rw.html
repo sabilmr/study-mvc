@@ -62,9 +62,9 @@
                         <tr th:each="data : ${rw.daftarRT}">
                             <td th:text="${data.id}"></td>
                             <td th:text="${data.name}"></td>
-                            <td th:text="${data.nameRt}"></td>
+                            <td th:text="${data.nameRT}"></td>
                             <td>
-                                <a th:href="@{~/kelurahan/detail/dusun/rw/rt/{id}(id = ${data.id})}" class="btn btn-primary">
+                                <a th:href="@{~/kelurahan/detail/{kelurahanId}/dusun/{dusunId}/rw/{rwId}/rt/{rtId}(kelurahanId=${kelurahan.id}, dusunId=${dusun.id}, rwId=${rw.id}, rtId=${data.id})}" class="btn btn-primary">
                                     Detail
                                 </a>
                             </td>

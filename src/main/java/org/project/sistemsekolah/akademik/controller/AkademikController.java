@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/fakultas")
+@RequestMapping("/akademik")
 public class AkademikController {
     public static List<FakultasModel> fakultas;
 
@@ -61,7 +61,7 @@ public class AkademikController {
             view.addObject("fakultas", model.get());
             return view;
         } else {
-            return new ModelAndView("redirect:/fakultas");
+            return new ModelAndView("redirect:/akademik");
         }
     }
 
@@ -77,7 +77,7 @@ public class AkademikController {
             view.addObject("jurusan", jurusanModel);
             return view;
         } else {
-            return new ModelAndView("redirect:/fakultas");
+            return new ModelAndView("redirect:/akademik");
         }
     }
 }

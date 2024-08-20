@@ -6,17 +6,25 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class DusunModel {
-    private Integer id;
+    private String id;
     private String name;
     private List<RWModel> daftarRW = new ArrayList<>();
 
-    public DusunModel(Integer id, String name) {
+    public DusunModel(String id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public DusunModel(String name) {
+        this.name = name;
+    }
+
+    public DusunModel() {
+        this.id = UUID.randomUUID().toString();
     }
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -13,7 +14,7 @@ public class FakultasModel {
     private Integer id;
     private String kode;
     private String nama;
-    private List<JurusanModel> jurusan;
+    private List<JurusanModel> jurusan = new ArrayList<>();
 
     public int jumlahJurusan(){
         return jurusan.size();

@@ -33,8 +33,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="data : ${kelurahan}">
-            <th scope="row" th:text="${data.id}">1</th>
+        <tr th:each="data, no : ${kelurahan}">
+            <th scope="row" th:text="${no.index + 1}"></th>
             <td th:text="${data.nama}">Mark</td>
             <td th:text="${data.alamat}">Otto</td>
             <td>

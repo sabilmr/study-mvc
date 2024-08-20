@@ -70,8 +70,8 @@
                             <input type="text" class="form-control" th:id="|id_${rwIter.index}_name|" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].name|" th:value="${rt.name}">
                         </div>
                         <div class="mb-3">
-                            <label th:for="|id_${rwIter.index}_nameRt|" class="form-label">Nama RT</label>
-                            <input type="text" class="form-control" th:id="|id_${rwIter.index}_nameRt|" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].nameRt|" th:value="${rt.nameRt}">
+                            <label th:for="|id_${rwIter.index}_nameRT|" class="form-label">Nama RT</label>
+                            <input type="text" class="form-control" th:id="|id_${rwIter.index}_nameRT|" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].nameRT|" th:value="${rt.nameRT}">
                         </div>
                     </div>
                     <h3>Warga</h3>
@@ -91,7 +91,7 @@
                                         </thead>
                                         <tbody>
                                         <tr th:each="warga, warIter : ${rt.daftarWarga}">
-                                            <th scope="row" th:text="${warIter.index}">1</th>
+                                            <th scope="row" th:text="${warIter.index + 1}">1</th>
                                             <td>
                                                 <input type="text" class="form-control" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].daftarWarga[${warIter.index}].nik|" th:value="${warga.nik}">
                                             </td>
