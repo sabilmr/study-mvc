@@ -1,6 +1,5 @@
 package org.project.sistemsekolah.kelurahan.service;
 
-import org.project.sistemsekolah.kelurahan.modal.DusunModel;
 import org.project.sistemsekolah.kelurahan.modal.KelurahanModel;
 
 import java.util.List;

@@ -2,10 +2,6 @@ package org.project.sistemsekolah.kelurahan.controller;
 
 import org.project.sistemsekolah.kelurahan.modal.*;
 import org.project.sistemsekolah.kelurahan.service.KelurahanService;
-import org.project.sistemsekolah.kelurahan.v2.model.DusunModelV2;
-import org.project.sistemsekolah.kelurahan.v2.model.KelurahanModelV2;
-import org.project.sistemsekolah.kelurahan.v2.model.RTModelV2;
-import org.project.sistemsekolah.kelurahan.v2.model.RWModelV2;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -118,7 +114,7 @@ public class KelurahanController {
 
         Optional<KelurahanModel> result = kelurahanService.getById(kelurahanId);
         if (result.isPresent()) {
-            DusunModel dusun = result.get().getDaftarDusun().stream().filter(d -> d.getId() == dusunId).findFirst().get();
+            DusunModel dusun = result.get().getDaftarDusun().stream().filter(d -> d.getId().equals(dusunId)).findFirst().get();
             view.addObject("kelurahan", result.get());
             view.addObject("dusun", dusun);
         } else {
@@ -176,13 +172,13 @@ public class KelurahanController {
         List<DusunModel> dusunModels = new ArrayList<>();
 
         ArrayList<WargaModel> wargaModels = new ArrayList<>();
-        wargaModels.add(new WargaModel(0,0,"","",0));
+        wargaModels.add(new WargaModel("",0,"","",0));
 
         ArrayList<RTModel> rtModels = new ArrayList<>();
-        rtModels.add(new RTModel(0,"","", wargaModels));
+        rtModels.add(new RTModel("","","", wargaModels));
 
         ArrayList<RWModel> rwModels = new ArrayList<>();
-        rwModels.add(new RWModel(0,"","", rtModels));
+        rwModels.add(new RWModel("","","", rtModels));
 
         DusunModel dusun = new DusunModel("","", rwModels);
         dusunModels.add(dusun);
@@ -202,13 +198,13 @@ public class KelurahanController {
         List<DusunModel> dusunModels = new ArrayList<>();
 
         ArrayList<WargaModel> wargaModels = new ArrayList<>();
-        wargaModels.add(new WargaModel(0,0,"","",0));
+        wargaModels.add(new WargaModel("",0,"","",0));
 
         ArrayList<RTModel> rtModels = new ArrayList<>();
-        rtModels.add(new RTModel(0,"","", wargaModels));
+        rtModels.add(new RTModel("","","", wargaModels));
 
         ArrayList<RWModel> rwModels = new ArrayList<>();
-        rwModels.add(new RWModel(0,"","", rtModels));
+        rwModels.add(new RWModel("","","", rtModels));
 
         DusunModel dusun = new DusunModel("","", rwModels);
         dusunModels.add(dusun);
@@ -223,7 +219,7 @@ public class KelurahanController {
 
     @PostMapping("/save")
     public ModelAndView save(@ModelAttribute("kelurahan") KelurahanModel kelurahanModel) {
-            kelurahanService.save(kelurahanModel);
+        kelurahanService.save(kelurahanModel);
         return new ModelAndView("redirect:/kelurahan");
     }
 
@@ -247,20 +243,21 @@ public class KelurahanController {
     }
 
     @GetMapping("/delete/{id}")
-    public ModelAndView delete(@PathVariable Integer id) {
+    public ModelAndView delete(@PathVariable String id) {
         ModelAndView mav = new ModelAndView("pages/kelurahan/delete");
 
-//        Optional<KelurahanModel> result = kelurahanService.getById(id);
-//        if (result.isPresent()) {
-//            mav.addObject("kelurahan", result.get());
-//            return mav;
-//        }
+        Optional<KelurahanModel> result = kelurahanService.getById(id);
+        if (result.isPresent()) {
+            mav.addObject("kelurahan", result.get());
+            return mav;
+        }
 
          return new ModelAndView("redirect:/kelurahan");
     }
 
     @PostMapping("/remove")
     public ModelAndView remove(@ModelAttribute KelurahanModel kelurahanModel) {
+        this.kelurahanService.delete(kelurahanModel.getId());
         return new ModelAndView("redirect:/kelurahan");
     }
 }

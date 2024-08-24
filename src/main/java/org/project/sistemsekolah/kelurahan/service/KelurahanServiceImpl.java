@@ -1,5 +1,6 @@
 package org.project.sistemsekolah.kelurahan.service;
 
+import org.project.sistemsekolah.kelurahan.modal.DusunModel;
 import org.project.sistemsekolah.kelurahan.modal.KelurahanModel;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ public class KelurahanServiceImpl implements KelurahanService {
         kelurahan = new ArrayList<>();
     }
 
-    @Override
+    @Override //digunakan untuk menunjukkan bahwa sebuah mwthod di class turunan
     public List<KelurahanModel> get() {
         if (kelurahan.isEmpty()) {
             return Collections.emptyList();
@@ -42,7 +43,7 @@ public class KelurahanServiceImpl implements KelurahanService {
     @Override
     public Optional<KelurahanModel> update(String id, KelurahanModel request) {
         for (int i = 0; i < kelurahan.size(); i++) {
-            if (kelurahan.get(i).getId() == request.getId()) {
+            if (kelurahan.get(i).getId().equals(id)) {
                 kelurahan.set(i, request);
                 return Optional.of(kelurahan.get(i));
             }
@@ -53,6 +54,13 @@ public class KelurahanServiceImpl implements KelurahanService {
 
     @Override
     public Optional<KelurahanModel> delete(String id) {
+        for (int i = 0; i < kelurahan.size(); i++) {
+            if (kelurahan.get(i).getId().equals(id)) {
+                kelurahan.remove(i);
+                return Optional.of(kelurahan.get(i));
+            }
+        }
         return Optional.empty();
+
     }
 }

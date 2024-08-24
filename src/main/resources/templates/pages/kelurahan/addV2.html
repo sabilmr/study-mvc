@@ -9,7 +9,7 @@
     <title>Kelurahan Add</title>
 </head>
 <body>
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand">Navbar</a>
         <form class="d-flex">
@@ -39,17 +39,93 @@
         <h3>Dusun</h3>
         <div id="dusun-container">
             <div class="row form-dusun" th:each="dusun, dusIter : ${kelurahan.daftarDusun}">
-                <button type="button" class="btn btn-primary btn-add">Add</button>
+                <button type="button" class="btn btn-primary btn-add">Add Dusun</button>
                 <div class="col-12">
                     <div class="mb-3">
                         <label th:for="|id_${dusIter.index}_name|" class="form-label">Nama Dusun</label>
                         <input type="text" class="form-control" th:id="|id_${dusIter.index}_name|" th:name="|daftarDusun[${dusIter.index}].name|">
                     </div>
                 </div>
+                <h3>RW</h3>
+                <div id="rw-container">
+                    <div class="row form-rw" th:each="rw, rwIter : ${dusun.daftarRW}">
+                        <button type="button" class="btn btn-success btn-rw">Add RW</button>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label th:for="|id_${rwIter.index}_name|" class="form-label">RW</label>
+                                <input type="text" class="form-control" th:id="|id_${rwIter.index}_name|" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].name|">
+                            </div>
+                            <div class="mb-3">
+                                <label th:for="|id_${rwIter.index}_nameRW|" class="form-label">Nama RW</label>
+                                <input type="text" class="form-control" th:id="|id_${rwIter.index}_nameRW|" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].nameRW|">
+                            </div>
+                        </div>
+                        <h3>RT</h3>
+                        <div id="rt-container">
+                            <div class="row form-rt" th:each="rt, rtIter : ${rw.daftarRT}">
+                                <button type="button" class="btn btn-danger btn-rt">Add RT</button>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label th:for="|id_${rwIter.index}_name|" class="form-label">RT</label>
+                                        <input type="text" class="form-control" th:id="|id_${rwIter.index}_name|" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].name|">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label th:for="|id_${rwIter.index}_nameRT|" class="form-label">Nama RT</label>
+                                        <input type="text" class="form-control" th:id="|id_${rwIter.index}_nameRT|" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].nameRT|">
+                                    </div>
+                                </div>
+                                <h3>Warga</h3>
+                                <div id="warga-container">
+                                    <div class="row" th:each="warga, warIter : ${rt.daftarWarga}">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <button type="button" class="btn btn-warning btn-warga">Add Warga</button>
+                                                <div class="card-body">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Nik</th>
+                                                            <th>Nama Warga</th>
+                                                            <th>Jenis Kelamin</th>
+                                                            <th>Umur</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr th:each="warga, warIter : ${rt.daftarWarga}">
+                                                            <th scope="row" th:text="${warIter.index + 1}">1</th>
+                                                            <td>
+                                                                <input type="text" class="form-control" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].daftarWarga[${warIter.index}].nik|">
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].daftarWarga[${warIter.index}].namaWarga|">
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].daftarWarga[${warIter.index}].jenisKelamin|">
+                                                                    <option value="">Pilih Jenis Kelamin</option>
+                                                                    <option value="Pria">Pria</option>
+                                                                    <option value="Wanita">Wanita</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].daftarWarga[${warIter.index}].age|">
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-dark">Save</button>
             <button type="reset" class="btn btn-secondary"><a th:href="@{~/kelurahan}">Close</a></button>
         </div>
     </form>
@@ -61,19 +137,338 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
-
+        // Penjelasan:
+        //     Ini adalah fungsi yang memastikan bahwa DOM (Document Object Model)
+        //     telah sepenuhnya dimuat sebelum kode jQuery di dalamnya dijalankan.
+        // Fungsi:
+        // Ini digunakan untuk menunda eksekusi kode jQuery hingga halaman HTML telah siap sepenuhnya.
         $('#dusun-container').on('click', '.btn-add', function () {
+            // Penjelasan:
+            //     Fungsi ini menetapkan event handler untuk elemen yang berfungsi ketika tombol dengan kelas .
+            //     btn-add di dalam elemen dengan ID #dusun-container diklik.
+            // Fungsi:
+            //     Ketika tombol "Add Dusun" diklik, fungsi yang didefinisikan di dalamnya akan dijalankan.
+            //     Teknik ini menggunakan event delegation, yang berarti event listener tetap aktif bahkan jika elemen .btn-add baru ditambahkan ke dalam #dusun-container.
             var dusunIndex = $('#dusun-container .form-dusun').length;
 
-            var element = '<div class="row form-dusun">\n' +
-                '                <div class="col-12">\n' +
-                '                    <div class="mb-3">\n' +
-                '                        <label for="id_'+dusunIndex+'_name" class="form-label">Nama Dusun</label>\n' +
-                '                        <input type="text" class="form-control" id="id_'+dusunIndex+'_name" name="daftarDusun['+dusunIndex+'].name">\n' +
+            var dusunElement =
+                '<div class="row form-dusun">\n' +
+                '    <button type="button" class="btn btn-primary btn-add">Add Dusun</button>\n' +
+                '    <div class="col-12">\n' +
+                '        <div class="mb-3">\n' +
+                '            <label for="id_' + dusunIndex + '_name" class="form-label">Nama Dusun</label>\n' +
+                '            <input type="text" class="form-control" id="id_' + dusunIndex + '_name" ' +
+                '                   name="daftarDusun[' + dusunIndex + '].name">\n' +
+                '        </div>\n' +
+                '    </div>\n' +
+                '    <div id="rw-container">\n' + // Container untuk RW dalam setiap Dusun
+                '        <div class="row form-rw">\n' +
+                '            <button type="button" class="btn btn-success btn-rw">Add RW</button>\n' +
+                '            <div class="col-12">\n' +
+                '                <div class="mb-3">\n' +
+                '                    <label for="id_' + dusunIndex + '_0_name" class="form-label">RW</label>\n' +
+                '                    <input type="text" class="form-control" id="id_' + dusunIndex + '_0_name" ' +
+                '                           name="daftarDusun[' + dusunIndex + '].daftarRW[0].name">\n' +
+                '                </div>\n' +
+                '                <div class="mb-3">\n' +
+                '                    <label for="id_' + dusunIndex + '_0_nameRW" class="form-label">Nama RW</label>\n' +
+                '                    <input type="text" class="form-control" id="id_' + dusunIndex + '_0_nameRW" ' +
+                '                           name="daftarDusun[' + dusunIndex + '].daftarRW[0].nameRW">\n' +
+                '                </div>\n' +
+                '                <div id="rt-container">\n' + // Container untuk RT dalam setiap RW
+                '                    <div class="row form-rt">\n' +
+                '                        <button type="button" class="btn btn-danger btn-rt">Add RT</button>\n' +
+                '                        <div class="col-12">\n' +
+                '                            <div class="mb-3">\n' +
+                '                                <label for="id_' + dusunIndex + '_0_0_name" class="form-label">RT</label>\n' +
+                '                                <input type="text" class="form-control" id="id_' + dusunIndex + '_0_0_name" ' +
+                '                                       name="daftarDusun[' + dusunIndex + '].daftarRW[0].daftarRT[0].name">\n' +
+                '                            </div>\n' +
+                '                            <div class="mb-3">\n' +
+                '                                <label for="id_' + dusunIndex + '_0_0_nameRT" class="form-label">Nama RT</label>\n' +
+                '                                <input type="text" class="form-control" id="id_' + dusunIndex + '_0_0_nameRT" ' +
+                '                                       name="daftarDusun[' + dusunIndex + '].daftarRW[0].daftarRT[0].nameRT">\n' +
+                '                            </div>\n' +
+                '                            <div id="warga-container">\n' + // Container untuk Warga dalam setiap RT
+                '                                <div class="row form-warga">\n' +
+                '                                    <button type="button" class="btn btn-warning btn-warga">Add Warga</button>\n' +
+                '                                    <div class="col-12">\n' +
+                '                                        <table class="table table-striped">\n' +
+                '                                            <thead>\n' +
+                '                                                <tr>\n' +
+                '                                                    <th>#</th>\n' +
+                '                                                    <th>Nik</th>\n' +
+                '                                                    <th>Nama Warga</th>\n' +
+                '                                                    <th>Jenis Kelamin</th>\n' +
+                '                                                    <th>Umur</th>\n' +
+                '                                                </tr>\n' +
+                '                                            </thead>\n' +
+                '                                            <tbody>\n' +
+                '                                                <tr>\n' +
+                '                                                    <th scope="row">1</th>\n' +
+                '                                                    <td>\n' +
+                '                                                        <input type="text" class="form-control" ' +
+                '                                                               name="daftarDusun[' + dusunIndex + '].daftarRW[0].daftarRT[0].daftarWarga[0].nik">\n' +
+                '                                                    </td>\n' +
+                '                                                    <td>\n' +
+                '                                                        <input type="text" class="form-control" ' +
+                '                                                               name="daftarDusun[' + dusunIndex + '].daftarRW[0].daftarRT[0].daftarWarga[0].namaWarga">\n' +
+                '                                                    </td>\n' +
+                '                                                    <td>\n' +
+                '                                                        <select class="form-select" ' +
+                '                                                                name="daftarDusun[' + dusunIndex + '].daftarRW[0].daftarRT[0].daftarWarga[0].jenisKelamin">\n' +
+                '                                                            <option value="">Pilih Jenis Kelamin</option>\n' +
+                '                                                            <option value="Pria">Pria</option>\n' +
+                '                                                            <option value="Wanita">Wanita</option>\n' +
+                '                                                        </select>\n' +
+                '                                                    </td>\n' +
+                '                                                    <td>\n' +
+                '                                                        <input type="text" class="form-control" ' +
+                '                                                               name="daftarDusun[' + dusunIndex + '].daftarRW[0].daftarRT[0].daftarWarga[0].age">\n' +
+                '                                                    </td>\n' +
+                '                                                </tr>\n' +
+                '                                            </tbody>\n' +
+                '                                        </table>\n' +
+                '                                    </div>\n' +
+                '                                </div>\n' +
+                '                            </div>\n' +
+                '                        </div>\n' +
                 '                    </div>\n' +
                 '                </div>\n' +
-                '            </div>';
-            $('#dusun-container').append(element);``
+                '            </div>\n' +
+                '        </div>\n' +
+                '    </div>\n' +
+                '</div>';
+
+            $('#dusun-container').append(dusunElement);
+        });
+
+        // Untuk menambah RW di dalam Dusun
+        $('#dusun-container').on('click', '.btn-rw', function () {
+            // Fungsi: Bagian ini menetapkan event listener pada elemen #dusun-container.
+            //         Event listener ini akan menangkap semua klik pada elemen yang memiliki class .btn-rw di dalam elemen #dusun-container.
+
+            var dusunContainer = $(this).closest('.form-dusun');
+            // Fungsi: Dari tombol RW (this) yang diklik, kode ini mencari elemen terdekat yang memiliki class .form-dusun.
+            //         Ini berguna untuk memastikan bahwa elemen RW yang baru akan ditambahkan ke bagian Dusun yang benar.
+
+            var rwContainer = dusunContainer.find('#rw-container');
+            // Fungsi: Setelah menemukan elemen .form-dusun, kode ini mencari elemen dengan ID #rw-container di dalam dusunContainer.
+
+            var rwIndex = rwContainer.find('.form-rw').length;
+            // Fungsi: Menghitung jumlah elemen dengan class .form-rw yang sudah ada di dalam rwContainer.
+
+            var dusunIndex = $('#dusun-container .form-dusun').index(dusunContainer);
+            // Fungsi: Mengambil indeks elemen .form-dusun di dalam #dusun-container yang berisi tombol RW yang diklik.
+
+            // Fungsi: Membuat elemen RW baru dalam bentuk string HTML.
+            //         Elemen ini berisi dua input untuk informasi RW (name dan nameRW), serta satu RT default yang berisi dua input (name dan nameRT).
+            var rwElement =
+                '<div class="row form-rw">\n' +
+                '    <button type="button" class="btn btn-success btn-rw">Add RW</button>\n' +
+                '    <div class="col-12">\n' +
+                '        <div class="mb-3">\n' +
+                '            <label for="id_' + dusunIndex + '_' + rwIndex + '_name" class="form-label">RW</label>\n' +
+                '            <input type="text" class="form-control" id="id_' + dusunIndex + '_' + rwIndex + '_name" ' +
+                '                   name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].name">\n' +
+                '        </div>\n' +
+                '        <div class="mb-3">\n' +
+                '            <label for="id_' + dusunIndex + '_' + rwIndex + '_nameRW" class="form-label">Nama RW</label>\n' +
+                '            <input type="text" class="form-control" id="id_' + dusunIndex + '_' + rwIndex + '_nameRW" ' +
+                '                   name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].nameRW">\n' +
+                '        </div>\n' +
+                '        <div id="rt-container">\n' +
+                '            <div class="row form-rt">\n' +
+                '                <button type="button" class="btn btn-danger btn-rt">Add RT</button>\n' +
+                '                <div class="col-12">\n' +
+                '                    <div class="mb-3">\n' +
+                '                        <label for="id_' + dusunIndex + '_' + rwIndex + '_0_name" class="form-label">RT</label>\n' +
+                '                        <input type="text" class="form-control" id="id_' + dusunIndex + '_' + rwIndex + '_0_name" ' +
+                '                               name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].daftarRT[0].name">\n' +
+                '                    </div>\n' +
+                '                    <div class="mb-3">\n' +
+                '                        <label for="id_' + dusunIndex + '_' + rwIndex + '_0_nameRT" class="form-label">Nama RT</label>\n' +
+                '                        <input type="text" class="form-control" id="id_' + dusunIndex + '_' + rwIndex + '_0_nameRT" ' +
+                '                               name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].daftarRT[0].nameRT">\n' +
+                '                    </div>\n' +
+                '                    <div id="warga-container">\n' +
+                '                        <div class="row form-warga">\n' +
+                '                            <button type="button" class="btn btn-warning btn-warga">Add Warga</button>\n' +
+                '                            <div class="col-12">\n' +
+                '                                <table class="table table-striped">\n' +
+                '                                    <thead>\n' +
+                '                                        <tr>\n' +
+                '                                            <th>#</th>\n' +
+                '                                            <th>Nik</th>\n' +
+                '                                            <th>Nama Warga</th>\n' +
+                '                                            <th>Jenis Kelamin</th>\n' +
+                '                                            <th>Umur</th>\n' +
+                '                                        </tr>\n' +
+                '                                    </thead>\n' +
+                '                                    <tbody>\n' +
+                '                                        <tr>\n' +
+                '                                            <th scope="row">1</th>\n' +
+                '                                            <td>\n' +
+                '                                                <input type="text" class="form-control" ' +
+                '                                                       name="daftarDusun[' + dusunIndex + '].daftarRW[0].daftarRT[0].daftarWarga[0].nik">\n' +
+                '                                            </td>\n' +
+                '                                            <td>\n' +
+                '                                                <input type="text" class="form-control" ' +
+                '                                                       name="daftarDusun[' + dusunIndex + '].daftarRW[0].daftarRT[0].daftarWarga[0].namaWarga">\n' +
+                '                                            </td>\n' +
+                '                                            <td>\n' +
+                '                                                <select class="form-select" ' +
+                '                                                        name="daftarDusun[' + dusunIndex + '].daftarRW[0].daftarRT[0].daftarWarga[0].jenisKelamin">\n' +
+                '                                                    <option value="">Pilih Jenis Kelamin</option>\n' +
+                '                                                    <option value="Pria">Pria</option>\n' +
+                '                                                    <option value="Wanita">Wanita</option>\n' +
+                '                                                </select>\n' +
+                '                                            </td>\n' +
+                '                                            <td>\n' +
+                '                                                <input type="text" class="form-control" ' +
+                '                                                       name="daftarDusun[' + dusunIndex + '].daftarRW[0].daftarRT[0].daftarWarga[0].age">\n' +
+                '                                            </td>\n' +
+                '                                        </tr>\n' +
+                '                                    </tbody>\n' +
+                '                                </table>\n' +
+                '                            </div>\n' +
+                '                        </div>\n' +
+                '                    </div>\n' +
+                '                </div>\n' +
+                '            </div>\n' +
+                '        </div>\n' +
+                '    </div>\n' +
+                '</div>';
+            // Fungsi: Menambahkan elemen rwElement yang baru saja dibuat ke dalam rwContainer.
+            rwContainer.append(rwElement);
+        });
+
+        // Untuk menambah RT di dalam RW
+        $('#dusun-container').on('click', '.btn-rt', function () {
+            var rwContainer = $(this).closest('.form-rw');
+
+            var rtContainer = rwContainer.find('#rt-container');
+            var rtIndex = rtContainer.find('.form-rt').length;
+
+            var dusunContainer = $(this).closest('.form-dusun');
+            var dusunIndex = $('#dusun-container .form-dusun').index(dusunContainer);
+
+            var rwIndex = dusunContainer.find('.form-rw').index(rwContainer);
+
+            var rtElement = '<div class="row form-rt">\n' +
+                '    <button type="button" class="btn btn-danger btn-rt">Add RT</button>\n' +
+                '    <div class="col-12">\n' +
+                '        <div class="mb-3">\n' +
+                '            <label for="id_' + dusunIndex + '_' + rwIndex + '_' + rtIndex + '_name" class="form-label">RT</label>\n' +
+                '            <input type="text" class="form-control" id="id_' + dusunIndex + '_' + rwIndex + '_' + rtIndex + '_name" name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].daftarRT[' + rtIndex + '].name">\n' +
+                '        </div>\n' +
+                '        <div class="mb-3">\n' +
+                '            <label for="id_' + dusunIndex + '_' + rwIndex + '_' + rtIndex + '_nameRT" class="form-label">Nama RT</label>\n' +
+                '            <input type="text" class="form-control" id="id_' + dusunIndex + '_' + rwIndex + '_' + rtIndex + '_nameRT" name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].daftarRT[' + rtIndex + '].nameRT">\n' +
+                '        </div>\n' +
+                '        <div id="warga-container">\n' +
+                '            <div class="row form-warga">\n' +
+                '                <button type="button" class="btn btn-warning btn-warga">Add Warga</button>\n' +
+                '                <div class="col-12">\n' +
+                '                    <table class="table table-striped">\n' +
+                '                        <thead>\n' +
+                '                            <tr>\n' +
+                '                                <th>#</th>\n' +
+                '                                <th>Nik</th>\n' +
+                '                                <th>Nama Warga</th>\n' +
+                '                                <th>Jenis Kelamin</th>\n' +
+                '                                <th>Umur</th>\n' +
+                '                            </tr>\n' +
+                '                        </thead>\n' +
+                '                        <tbody>\n' +
+                '                            <tr>\n' +
+                '                                <th scope="row">1</th>\n' +
+                '                                <td>\n' +
+                '                                    <input type="text" class="form-control" name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].daftarRT[' + rtIndex + '].daftarWarga[0].nik">\n' +
+                '                                </td>\n' +
+                '                                <td>\n' +
+                '                                    <input type="text" class="form-control" name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].daftarRT[' + rtIndex + '].daftarWarga[0].namaWarga">\n' +
+                '                                </td>\n' +
+                '                                <td>\n' +
+                '                                    <select class="form-select" name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].daftarRT[' + rtIndex + '].daftarWarga[0].jenisKelamin">\n' +
+                '                                        <option value="">Pilih Jenis Kelamin</option>\n' +
+                '                                        <option value="Pria">Pria</option>\n' +
+                '                                        <option value="Wanita">Wanita</option>\n' +
+                '                                    </select>\n' +
+                '                                </td>\n' +
+                '                                <td>\n' +
+                '                                    <input type="text" class="form-control" name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].daftarRT[' + rtIndex + '].daftarWarga[0].age">\n' +
+                '                                </td>\n' +
+                '                            </tr>\n' +
+                '                        </tbody>\n' +
+                '                    </table>\n' +
+                '                </div>\n' +
+                '            </div>\n' +
+                '        </div>\n' +
+                '    </div>\n' +
+                '</div>';
+
+            rtContainer.append(rtElement);
+        });
+
+        //event untuk menambahkan warga dalam RT
+        $('#dusun-container').on('click', '.btn-warga', function () {
+            var rtContainer = $(this).closest('.form-rt');
+
+            var wargaContainer = rtContainer.find('#warga-container');
+            var wargaIndex = wargaContainer.find('.form-warga').length;
+
+            var rtIndex = rtContainer.parent().find('.form-rt').index(rtContainer);
+
+            var rwContainer = rtContainer.closest('.form-rw');
+            var rwIndex = rwContainer.parent().find('.form-rw').index(rwContainer);
+
+            var dusunContainer = rwContainer.closest('.form-dusun');
+            var dusunIndex = $('#dusun-container .form-dusun').index(dusunContainer);
+
+            var wargaElement =
+                '<div class="row form-warga">\n' +
+                '    <div class="col-12">\n' +
+                '        <table class="table table-striped">\n' +
+                '            <thead>\n' +
+                '                <tr>\n' +
+                '                    <th>#</th>\n' +
+                '                    <th>Nik</th>\n' +
+                '                    <th>Nama Warga</th>\n' +
+                '                    <th>Jenis Kelamin</th>\n' +
+                '                    <th>Umur</th>\n' +
+                '                </tr>\n' +
+                '            </thead>\n' +
+                '            <tbody>\n' +
+                '                <tr>\n' +
+                '                    <th scope="row">' + (wargaIndex + 1) + '</th>\n' +
+                '                    <td>\n' +
+                '                        <input type="text" class="form-control" ' +
+                '                               name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].daftarRT[' + rtIndex + '].daftarWarga[' + wargaIndex + '].nik">\n' +
+                '                    </td>\n' +
+                '                    <td>\n' +
+                '                        <input type="text" class="form-control" ' +
+                '                               name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].daftarRT[' + rtIndex + '].daftarWarga[' + wargaIndex + '].namaWarga">\n' +
+                '                    </td>\n' +
+                '                    <td>\n' +
+                '                        <select class="form-select" ' +
+                '                                name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].daftarRT[' + rtIndex + '].daftarWarga[' + wargaIndex + '].jenisKelamin">\n' +
+                '                            <option value="">Pilih Jenis Kelamin</option>\n' +
+                '                            <option value="Pria">Pria</option>\n' +
+                '                            <option value="Wanita">Wanita</option>\n' +
+                '                        </select>\n' +
+                '                    </td>\n' +
+                '                    <td>\n' +
+                '                        <input type="text" class="form-control" ' +
+                '                               name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].daftarRT[' + rtIndex + '].daftarWarga[' + wargaIndex + '].age">\n' +
+                '                    </td>\n' +
+                '                </tr>\n' +
+                '            </tbody>\n' +
+                '        </table>\n' +
+                '    </div>\n' +
+                '</div>';
+
+            wargaContainer.append(wargaElement);
         });
     });
 </script>

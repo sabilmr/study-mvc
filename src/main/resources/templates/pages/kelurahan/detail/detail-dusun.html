@@ -24,10 +24,7 @@
     <form>
         <div class="row">
             <div class="col-12">
-                <div class="mb-3">
-                    <label for="id" class="form-label">Id</label>
-                    <input type="text" class="form-control" id="id" th:value="${dusun.id}" readonly>
-                </div>
+                <input type="hidden" name="id" th:value="${dusun.id}" readonly>
                 <div class="mb-3">
                     <label for="kelurahan" class="form-label">Kelurahan</label>
                     <input type="text" class="form-control" id="kelurahan" th:value="${kelurahan.nama}" readonly>
@@ -52,8 +49,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="data :${dusun.daftarRW}">
-                            <th scope="row" th:text="${data.id}">1</th>
+                        <tr th:each="data, no :${dusun.daftarRW}">
+                            <th scope="row" th:text="${no.index + 1}">1</th>
                             <td th:text="${data.name}">Mark</td>
                             <td th:text="${data.nameRW}">Mark</td>
                             <td>
