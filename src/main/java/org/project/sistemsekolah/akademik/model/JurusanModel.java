@@ -12,4 +12,5 @@ public class JurusanModel {
     private String kode;
     private String name;
 
+
 }

@@ -6,12 +6,12 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class FakultasModel {
-    private Integer id;
+    private String id;
     private String kode;
     private String nama;
     private List<JurusanModel> jurusan = new ArrayList<>();
@@ -20,9 +20,18 @@ public class FakultasModel {
         return jurusan.size();
     }
 
-    public FakultasModel(Integer id, String kode, String nama) {
+    public FakultasModel(String id, String kode, String nama) {
         this.id = id;
         this.kode = kode;
         this.nama = nama;
+    }
+
+    public FakultasModel(String kode, String nama) {
+        this.kode = kode;
+        this.nama = nama;
+    }
+
+    public FakultasModel() {
+        this.id = UUID.randomUUID().toString();
     }
 }

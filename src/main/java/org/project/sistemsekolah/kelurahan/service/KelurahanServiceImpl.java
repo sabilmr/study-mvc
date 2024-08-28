@@ -44,8 +44,8 @@ public class KelurahanServiceImpl implements KelurahanService {
     public Optional<KelurahanModel> update(String id, KelurahanModel request) {
         for (int i = 0; i < kelurahan.size(); i++) {
             if (kelurahan.get(i).getId().equals(id)) {
-                kelurahan.set(i, request);
-                return Optional.of(kelurahan.get(i));
+                KelurahanModel kelurahanModel1 = kelurahan.set(i, request);
+                return Optional.of(kelurahanModel1);
             }
         }
         return Optional.empty();
@@ -56,8 +56,8 @@ public class KelurahanServiceImpl implements KelurahanService {
     public Optional<KelurahanModel> delete(String id) {
         for (int i = 0; i < kelurahan.size(); i++) {
             if (kelurahan.get(i).getId().equals(id)) {
-                kelurahan.remove(i);
-                return Optional.of(kelurahan.get(i));
+                KelurahanModel kelurahanModel = kelurahan.remove(i);
+                return Optional.of(kelurahanModel);
             }
         }
         return Optional.empty();

@@ -1,32 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
     <title>Detail-RW</title>
 </head>
 <body>
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand">Navbar</a>
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
-<div class="container-fluid">
+<div class="container-fluid" layout:fragment="content">
     <h2>Detail RW</h2>
     <form>
         <div class="row">
             <div class="col-12">
-                <div class="mb-3">
-                    <label for="id" class="form-label">Id</label>
-                    <input type="text" class="form-control" id="id" th:value="${rw.id}" readonly>
-                </div>
+                <input type="hidden" name="id" th:value="${rw.id}" readonly>
                 <div class="mb-3">
                     <label for="nama" class="form-label">Kelurahan</label>
                     <input type="text" class="form-control" id="nama" th:value="${kelurahan.nama}" readonly>
@@ -59,8 +44,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="data : ${rw.daftarRT}">
-                            <td th:text="${data.id}"></td>
+                        <tr th:each="data, no : ${rw.daftarRT}">
+                            <td th:text="${no.index + 1}"></td>
                             <td th:text="${data.name}"></td>
                             <td th:text="${data.nameRT}"></td>
                             <td>

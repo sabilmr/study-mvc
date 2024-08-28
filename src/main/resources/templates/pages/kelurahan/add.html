@@ -19,9 +19,7 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <h3>Kelurahan
-        <button type="submit" class="btn btn-primary">Add</button>
-    </h3>
+    <h3>Kelurahan</h3>
 
     <form th:action="@{~/kelurahan/save}" method="post">
         <div class="row">
@@ -73,7 +71,7 @@
                         </div>
                     </div>
                     <h3>Warga</h3>
-                    <div class="row" th:each="warga, warIter : ${rt.daftarWarga}">
+                    <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">

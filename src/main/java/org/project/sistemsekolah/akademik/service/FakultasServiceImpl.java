@@ -3,19 +3,31 @@ package org.project.sistemsekolah.akademik.service;
 import org.project.sistemsekolah.akademik.model.FakultasModel;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class FakultasServiceImpl implements FakultasService{
-    @Override
-    public List<FakultasModel> get() {
-        return List.of();
+public class FakultasServiceImpl implements FakultasService {
+    private static List<FakultasModel> fakultas;
+
+    public FakultasServiceImpl() {
+        fakultas = new ArrayList<>();
     }
 
     @Override
-    public Optional<FakultasModel> getById(Integer id) {
-        return Optional.empty();
+    public List<FakultasModel> get() {
+        if (fakultas.isEmpty()) {
+            return Collections.emptyList();
+        }
+        return fakultas;
+    }
+
+    @Override
+    public Optional<FakultasModel> getById(String id) {
+        Optional<FakultasModel> fakultasModel = fakultas.stream().filter(f -> f.getId().equals(id)).findFirst();
+        return fakultasModel;
     }
 
     @Override
