@@ -37,7 +37,7 @@
                 </div>
                 <h3>RW</h3>
                 <div class="rw-container">
-                    <div class="row form-rw" th:each="rw, rwIter : ${dusun.daftarRW}">
+                    <div class="row form-rw mb-3" th:each="rw, rwIter : ${dusun.daftarRW}">
                         <div class="d-flex justify-content-between">
                             <button type="button" class="btn btn-success btn-rw ms-auto">Add RW</button>
                             <button type="button" class="btn btn-danger btn-delete-rw">Delete RW</button>
@@ -54,10 +54,10 @@
                         </div>
                         <h3>RT</h3>
                         <div class="rt-container">
-                            <div class="row form-rt" th:each="rt, rtIter : ${rw.daftarRT}">
+                            <div class="row form-rt mb-3" th:each="rt, rtIter : ${rw.daftarRT}">
                                 <div class="d-flex justify-content-between">
                                     <button type="button" class="btn btn-secondary btn-rt ms-auto">Add RT</button>
-                                    <button type="button" class="btn btn-danger btn-delete">Delete RT</button>
+                                    <button type="button" class="btn btn-danger btn-delete-rt">Delete RT</button>
                                 </div>
                                 <div class="col-12">
                                     <div class="mb-3">
@@ -75,7 +75,7 @@
                                         <div class="col-12">
                                             <div class="d-flex justify-content-between">
                                                 <button type="button" class="btn btn-warning btn-warga ms-auto">Add Warga</button>
-                                                <button type="button" class="btn btn-danger btn-delete-warga">Delete Warga</button>
+                                                <button type="button" class="btn btn-danger btn-delete-warga-list">Delete Warga</button>
                                             </div>
                                             <div class="card">
                                                 <div class="card-body">
@@ -110,7 +110,9 @@
                                                                 <input type="text" class="form-control" th:name="|daftarDusun[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].daftarWarga[${warIter.index}].age|" th:value="${warga.age}">
                                                             </td>
                                                             <td>
-
+                                                                <a class="btn btn-danger btn-delete-warga">
+                                                                    &nbsp;Delete
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                         </tbody>
@@ -134,5 +136,8 @@
         </div>
     </form>
 </div>
+<th:block layout:fragment="script">
+    <script th:src="@{~/script/kelurahan/edit.js}"></script>
+</th:block>
 </body>
 </html>

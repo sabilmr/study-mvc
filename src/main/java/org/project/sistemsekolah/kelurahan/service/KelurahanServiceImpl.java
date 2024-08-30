@@ -1,7 +1,6 @@
 package org.project.sistemsekolah.kelurahan.service;
 
-import org.project.sistemsekolah.kelurahan.modal.DusunModel;
-import org.project.sistemsekolah.kelurahan.modal.KelurahanModel;
+import org.project.sistemsekolah.kelurahan.modal.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +12,30 @@ public class KelurahanServiceImpl implements KelurahanService {
 
     public KelurahanServiceImpl() {
         kelurahan = new ArrayList<>();
+        KelurahanModel kelurahanModel1 = new KelurahanModel(UUID.randomUUID().toString(),"DESA SEBANI","PANDAAN");
+
+        DusunModel dusunModel1 = new DusunModel(UUID.randomUUID().toString(),"DUSUN JEDUNG");
+
+        List<DusunModel> dusun = Arrays.asList(dusunModel1);
+        kelurahanModel1.setDaftarDusun(dusun);
+
+        RWModel rwModel1 = new RWModel(UUID.randomUUID().toString(),"RW01","PAK MUHKLIS");
+
+        List<RWModel> rw1 = Arrays.asList(rwModel1);
+        dusunModel1.setDaftarRW(rw1);
+
+        RTModel rtModel1 = new RTModel(UUID.randomUUID().toString(),"RT07","PAK MUMUH");
+
+        List<RTModel> rt1 = Arrays.asList(rtModel1);
+        rwModel1.setDaftarRT(rt1);
+
+        WargaModel wargaModel1 = new WargaModel(UUID.randomUUID().toString(),1234,"SABILLA MUHAMMAD RAYHAN","Pria",21);
+
+        List<WargaModel> warga1 = Arrays.asList(wargaModel1);
+        rtModel1.setDaftarWarga(warga1);
+
+        kelurahan.add(kelurahanModel1);
+
     }
 
     @Override //digunakan untuk menunjukkan bahwa sebuah mwthod di class turunan

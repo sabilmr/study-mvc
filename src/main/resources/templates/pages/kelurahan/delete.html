@@ -23,7 +23,7 @@
             </div>
         </div>
         <h3>Dusun</h3>
-        <div class="row" th:each="dusun, dusIter : ${kelurahan.daftarDusun}">
+        <div class="row mb-3" th:each="dusun, dusIter : ${kelurahan.daftarDusun}">
             <div class="col-12">
                 <div class="mb-3">
                     <label th:for="|id_${dusIter.index}_name|" class="form-label">Nama Dusun</label>
@@ -31,7 +31,7 @@
                 </div>
             </div>
             <h3>RW</h3>
-            <div class="row" th:each="rw, rwIter : ${dusun.daftarRW}">
+            <div class="row mb-3" th:each="rw, rwIter : ${dusun.daftarRW}">
                 <div class="col-12">
                     <div class="mb-3">
                         <label th:for="|id_${rwIter.index}_name|" class="form-label">RW</label>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <h3>RT</h3>
-                <div class="row" th:each="rt, rtIter : ${rw.daftarRT}">
+                <div class="row mb-3" th:each="rt, rtIter : ${rw.daftarRT}">
                     <div class="col-12">
                         <div class="mb-3">
                             <label th:for="|id_${rwIter.index}_name|" class="form-label">RT</label>

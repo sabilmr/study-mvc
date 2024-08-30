@@ -1,23 +1,96 @@
 $(document).ready(function () {
-    // Penjelasan:
-    //     Ini adalah fungsi yang memastikan bahwa DOM (Document Object Model)
-    //     telah sepenuhnya dimuat sebelum kode jQuery di dalamnya dijalankan.
-    // Fungsi:
-    // Ini digunakan untuk menunda eksekusi kode jQuery hingga halaman HTML telah siap sepenuhnya.
+
+    //delete dusun
+    $('#dusun-container').on('click', '.btn-delete-dusun', function () {
+        $(this).closest('.form-dusun').remove();
+
+        $('#dusun-container .form-dusun').each(function (dusunIndex) {
+            $(this).find('[name]').each(function () {
+                var nameDusun = $(this).attr('name');
+                nameDusun = nameDusun.replace(/daftarDusun\[\d+\]/, `daftarDusun[${dusunIndex}]`);
+                $(this).attr('name', nameDusun);
+            });
+        });
+    });
+
+    $('#dusun-container').on('click', '.btn-delete-rw', function () {
+        $(this).closest('.form-rw').remove();
+
+        $('#dusun-container .form-dusun').each(function (dusunIndex) {
+            $(this).find('.form-rw').each(function (rwIndex) {
+                $(this).find('[name]').each(function () {
+                    var nameRW = $(this).attr('name');
+                    nameRW = nameRW.replace(/daftarDusun\[\d+\].daftarRW\[\d+\]/, `daftarDusun[${dusunIndex}].daftarRW[${rwIndex}]`);
+                    $(this).attr('name', nameRW);
+                });
+            });
+        });
+    });
+
+    $('#dusun-container').on('click', '.btn-delete-rt', function () {
+        $(this).closest('.rt-container').remove();
+
+        $('#dusun-container .form-dusun').each(function (dusunIndex) {
+            $(this).find('.form-rw').each(function (rwIndex) {
+                $(this).find('.form-rt').each(function (rtIndex) {
+                    $(this).find('[name]').each(function () {
+                        var nameRT = $(this).attr('name');
+                        nameRT = nameRT.replace(/daftarDusun\[\d+\].daftarRW\[\d+\].daftarRT\[\d+\]/, `daftarDusun[${dusunIndex}].daftarRW[${rwIndex}].daftarRT[${rtIndex}]`);
+                        $(this).attr('name', nameRT);
+                    });
+                });
+            });
+        });
+    });
+
+    $('#dusun-container ').on('click','.btn-delete-warga-list', function () {
+        $(this).closest('.warga-container').remove();
+
+        $('#dusun-container .form-dusun').each(function (dusunIndex) {
+            $(this).find('.form-rw').each(function (rwIndex) {
+                $(this).find('.form-rt').each(function (rtIndex) {
+                    $(this).find('.form-warga').each(function (wargaIndex) {
+                        $(this).find('[name]').each(function () {
+                            var nameWarga = $(this).attr('name');
+                            nameWarga = nameWarga.replace(/daftarDusun\[\d+\].daftarRW\[\d+\].daftarRT\[\d+\].daftarWarga\[\d+\]/, `daftarDusun[${dusunIndex}].daftarRW[${rwIndex}].daftarRT[${rtIndex}].daftarWarga[${wargaIndex}]`);
+                            $(this).attr('name', nameWarga);
+                        });
+                    });
+                });
+            });
+        });
+    });
+
+    $('#dusun-container').on('click','.btn-delete-warga', function () {
+        $(this).closest('.tbl-warga').remove();
+
+        $('#dusun-container .form-dusun').each(function (dusunIndex) {
+            $(this).find('.form-rw').each(function (rwIndex) {
+                $(this).find('.form-rt').each(function (rtIndex) {
+                    $(this).find('.tbl-body .tbl-warga').each(function (wargaIndex) {
+                        $(this).find('th[scope="row"]').text(wargaIndex + 1);
+                        $(this).find('[name]').each(function () {
+                            var nameWarga = $(this).attr('name');
+                            nameWarga = nameWarga.replace(/daftarDusun\[\d+\].daftarRW\[\d+\].daftarRT\[\d+\].daftarWarga\[\d+\]/, `daftarDusun[${dusunIndex}].daftarRW[${rwIndex}].daftarRT[${rtIndex}].daftarWarga[${wargaIndex}]`);
+                            $(this).attr('name', nameWarga);
+                        });
+                    });
+                });
+            });
+        });
+    });
+
+
+
     $('#dusun-container').on('click', '.btn-add', function () {
-        // Penjelasan:
-        //     Fungsi ini menetapkan event handler untuk elemen yang berfungsi ketika tombol dengan kelas .
-        //     btn-add di dalam elemen dengan ID #dusun-container diklik.
-        // Fungsi:
-        //     Ketika tombol "Add Dusun" diklik, fungsi yang didefinisikan di dalamnya akan dijalankan.
-        //     Teknik ini menggunakan event delegation, yang berarti event listener tetap aktif bahkan jika elemen .btn-add baru ditambahkan ke dalam #dusun-container.
+
         var dusunIndex = $('#dusun-container .form-dusun').length;
 
-        var dusunElement =
-            '<div class="row form-dusun">\n' +
-            '  <div class="d-flex justify-content-between">\n' +
-            '     <button type="button" class="btn btn-primary btn-add ms-auto">Add Dusun</button>\n' +
-            '    </div>' +
+        var dusunElement = '<div class="row form-dusun">\n' +
+            '   <div class="d-flex justify-content-between">\n' +
+            '       <button type="button" class="btn btn-primary btn-add ms-auto">Add Dusun</button>\n' +
+            '       <button type="button" class="btn btn-danger btn-delete-dusun">Delete Dusun</button>\n' +
+            '   </div>\n' +
             '    <div class="col-12">\n' +
             '        <div class="mb-3">\n' +
             '            <label for="id_' + dusunIndex + '_name" class="form-label">Nama Dusun</label>\n' +
@@ -26,9 +99,10 @@ $(document).ready(function () {
             '        </div>\n' +
             '    </div>\n' +
             '    <div class="rw-container">\n' + // Container untuk RW dalam setiap Dusun
-            '          <div class="row form-rw">\n' +
-            '            <div class="d-flex justify-content-between">\n' +
-            '               <button type="button" class="btn btn-success btn-rw ms-auto">Add RW</button>\n' +
+            '         <div class="row form-rw mb-3">\n' +
+            '           <div class="d-flex justify-content-between">\n' +
+            '             <button type="button" class="btn btn-success btn-rw ms-auto">Add RW</button>\n' +
+            '             <button type="button" class="btn btn-danger btn-delete-rw">Delete RW</button>\n' +
             '            </div>\n' +
             '            <div class="col-12">\n' +
             '                <div class="mb-3">\n' +
@@ -42,9 +116,10 @@ $(document).ready(function () {
             '                           name="daftarDusun[' + dusunIndex + '].daftarRW[0].nameRW">\n' +
             '                </div>\n' +
             '                <div class="rt-container">\n' + // Container untuk RT dalam setiap RW
-            '                    <div class="row form-rt">\n' +
+            '                    <div class="row form-rt mb-3">\n' +
             '                       <div class="d-flex justify-content-between">\n' +
-            '                           <button type="button" class="btn btn-danger btn-rt ms-auto">Add RT</button>\n' +
+            '                         <button type="button" class="btn btn-secondary btn-rt ms-auto">Add RT</button>\n' +
+            '                         <button type="button" class="btn btn-danger btn-delete-rt">Delete RT</button>\n' +
             '                        </div>\n' +
             '                        <div class="col-12">\n' +
             '                            <div class="mb-3">\n' +
@@ -60,7 +135,8 @@ $(document).ready(function () {
             '                            <div class="warga-container">\n' + // Container untuk Warga dalam setiap RT
             '                                <div class="row form-warga">\n' +
             '                                  <div class="d-flex justify-content-between">\n' +
-            '                                      <button type="button" class="btn btn-warning btn-warga ms-auto">Add Warga</button>\n' +
+            '                                       <button type="button" class="btn btn-warning btn-warga ms-auto">Add Warga</button>\n' +
+            '                                       <button type="button" class="btn btn-danger btn-delete-warga-list">Delete Warga</button>\n' +
             '                                    </div>\n' +
             '                                    <div class="col-12 mb-3">\n' +
             '                                        <table class="table table-striped">\n' +
@@ -96,6 +172,11 @@ $(document).ready(function () {
             '                                                        <input type="text" class="form-control" ' +
             '                                                               name="daftarDusun[' + dusunIndex + '].daftarRW[0].daftarRT[0].daftarWarga[0].age">\n' +
             '                                                    </td>\n' +
+            '                                                    <td>\n' +
+            '                                                        <a class="btn btn-danger btn-delete-warga">\n' +
+            '                                                           &nbsp;Delete\n' +
+            '                                                        </a>\n' +
+            '                                                    </td>\n' +
             '                                                </tr>\n' +
             '                                            </tbody>\n' +
             '                                        </table>\n' +
@@ -115,28 +196,17 @@ $(document).ready(function () {
 
     // Untuk menambah RW di dalam Dusun
     $('#dusun-container').on('click', '.btn-rw', function () {
-        // Fungsi: Bagian ini menetapkan event listener pada elemen #dusun-container.
-        //         Event listener ini akan menangkap semua klik pada elemen yang memiliki class .btn-rw di dalam elemen #dusun-container.
 
         var dusunContainer = $(this).closest('.form-dusun');
-        // Fungsi: Dari tombol RW (this) yang diklik, kode ini mencari elemen terdekat yang memiliki class .form-dusun.
-        //         Ini berguna untuk memastikan bahwa elemen RW yang baru akan ditambahkan ke bagian Dusun yang benar.
-
         var rwContainer = dusunContainer.find('.rw-container');
-        // Fungsi: Setelah menemukan elemen .form-dusun, kode ini mencari elemen dengan ID #rw-container di dalam dusunContainer.
 
         var rwIndex = rwContainer.find('.form-rw').length;
-        // Fungsi: Menghitung jumlah elemen dengan class .form-rw yang sudah ada di dalam rwContainer.
-
         var dusunIndex = $('#dusun-container .form-dusun').index(dusunContainer);
-        // Fungsi: Mengambil indeks elemen .form-dusun di dalam #dusun-container yang berisi tombol RW yang diklik.
 
-        // Fungsi: Membuat elemen RW baru dalam bentuk string HTML.
-        //         Elemen ini berisi dua input untuk informasi RW (name dan nameRW), serta satu RT default yang berisi dua input (name dan nameRT).
-        var rwElement =
-            '<div class="row form-rw">\n' +
+        var rwElement = '<div class="row form-rw mb-3">\n' +
             '    <div class="d-flex justify-content-between">\n' +
             '         <button type="button" class="btn btn-success btn-rw ms-auto">Add RW</button>\n' +
+            '         <button type="button" class="btn btn-danger btn-delete-rw">Delete RW</button>\n' +
             '    </div>\n' +
             '    <div class="col-12">\n' +
             '        <div class="mb-3">\n' +
@@ -152,7 +222,8 @@ $(document).ready(function () {
             '        <div class="rt-container">\n' +
             '            <div class="row form-rt">\n' +
             '                <div class="d-flex justify-content-between">\n' +
-            '                     <button type="button" class="btn btn-danger btn-rt ms-auto">Add RT</button>\n' +
+            '                     <button type="button" class="btn btn-secondary btn-rt ms-auto">Add RT</button>\n' +
+            '                     <button type="button" class="btn btn-danger btn-delete-rt">Delete RT</button>\n' +
             '                </div>\n' +
             '                <div class="col-12">\n' +
             '                    <div class="mb-3">\n' +
@@ -169,6 +240,7 @@ $(document).ready(function () {
             '                        <div class="row form-warga">\n' +
             '                            <div class="d-flex justify-content-between">\n' +
             '                                 <button type="button" class="btn btn-warning btn-warga ms-auto">Add Warga</button>\n' +
+            '                                 <button type="button" class="btn btn-danger btn-delete-warga-list">Delete Warga</button>\n' +
             '                            </div>\n' +
             '                            <div class="col-12 mb-3">\n' +
             '                                <table class="table table-striped">\n' +
@@ -204,6 +276,11 @@ $(document).ready(function () {
             '                                                <input type="text" class="form-control" ' +
             '                                                       name="daftarDusun[' + dusunIndex + '].daftarRW['+ rwIndex +'].daftarRT[0].daftarWarga[0].age">\n' +
             '                                            </td>\n' +
+            '                                            <td>\n' +
+            '                                               <a class="btn btn-danger btn-delete-warga">\n' +
+            '                                                  &nbsp;Delete\n' +
+            '                                               </a>\n' +
+            '                                           </td>\n' +
             '                                        </tr>\n' +
             '                                    </tbody>\n' +
             '                                </table>\n' +
@@ -231,9 +308,10 @@ $(document).ready(function () {
 
         var rwIndex = dusunContainer.find('.form-rw').index(rwContainer);
 
-        var rtElement = '<div class="row form-rt">\n' +
+        var rtElement = '<div class="row form-rt mb-3">\n' +
             ' <div class="d-flex justify-content-between">\n' +
-            '     <button type="button" class="btn btn-danger btn-rt ms-auto">Add RT</button>\n' +
+            '     <button type="button" class="btn btn-secondary btn-rt ms-auto">Add RT</button>\n' +
+            '     <button type="button" class="btn btn-danger btn-delete-rt">Delete RT</button>\n' +
             '    </div>\n' +
             '    <div class="col-12">\n' +
             '        <div class="mb-3">\n' +
@@ -248,6 +326,7 @@ $(document).ready(function () {
             '            <div class="row form-warga">\n' +
             '                <div class="d-flex justify-content-between">\n' +
             '                     <button type="button" class="btn btn-warning btn-warga ms-auto">Add Warga</button>\n' +
+            '                     <button type="button" class="btn btn-danger btn-delete-warga-list">Delete Warga</button>\n' +
             '                </div>\n' +
             '                <div class="col-12 mb-3">\n' +
             '                    <table class="table table-striped">\n' +
@@ -279,6 +358,11 @@ $(document).ready(function () {
             '                                <td>\n' +
             '                                    <input type="text" class="form-control" name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].daftarRT[' + rtIndex + '].daftarWarga[0].age">\n' +
             '                                </td>\n' +
+            '                                <td>\n' +
+            '                                    <a class="btn btn-danger btn-delete-warga">\n' +
+            '                                      &nbsp;Delete\n' +
+            '                                    </a>\n' +
+            '                               </td>\n' +
             '                            </tr>\n' +
             '                        </tbody>\n' +
             '                    </table>\n' +
@@ -309,8 +393,7 @@ $(document).ready(function () {
 
         var wargaIndex = wargaContainer.find('.tbl-warga').length;
 
-        var wargaElement =
-            '                <tr class="tbl-warga">\n' +
+        var wargaElement = '<tr class="tbl-warga">\n' +
             '                    <th scope="row">' + (wargaIndex + 1) + '</th>\n' +
             '                    <td>\n' +
             '                        <input type="text" class="form-control" ' +
@@ -331,6 +414,11 @@ $(document).ready(function () {
             '                    <td>\n' +
             '                        <input type="text" class="form-control" ' +
             '                               name="daftarDusun[' + dusunIndex + '].daftarRW[' + rwIndex + '].daftarRT[' + rtIndex + '].daftarWarga[' + wargaIndex + '].age">\n' +
+            '                    </td>\n' +
+            '                    <td>\n' +
+            '                       <a class="btn btn-danger btn-delete-warga">\n' +
+            '                         &nbsp;Delete\n' +
+            '                      </a>\n' +
             '                    </td>\n' +
             '                </tr>';
 
